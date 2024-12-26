@@ -7,6 +7,7 @@ export function useUrlState<T extends Record<string, string>>(
     const [searchParams, setSearchParams] = useSearchParams();
 
     const state = Object.keys(defaultValue).reduce((acc, key) => {
+        // @ts-ignore
         acc[key] = searchParams.get(key) || defaultValue[key];
         return acc;
     }, {} as T);
