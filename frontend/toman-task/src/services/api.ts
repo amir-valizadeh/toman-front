@@ -14,8 +14,11 @@ export const getPayments = async (filters: PaymentFilters) => {
     if (filters.page) params.append('page', filters.page.toString());
     if (filters.limit) params.append('limit', filters.limit.toString());
 
-    const { data } = await api.get<{ data: Payment[]; total: number }>(`/payments?${params}`);
-    return data;
+    const { data } = await api.get<{ entities:Payment[],total:number }>(`/payments?${params}`);
+    return {
+        data: data,
+        total: data.total
+    };
 };
 
 export const getPaymentById = async (id: string) => {

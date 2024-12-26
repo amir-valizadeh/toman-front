@@ -1,13 +1,13 @@
 export type PaymentStatus = 'success' | 'failed' | 'pending';
-export type PaymentType = 'salary' | 'invoice' | 'subscription';
+export type PaymentType = 'salary' | 'bonus' | 'commission' | 'transportation' | 'overtime';
 
 export interface Payment {
     id: string;
     type: PaymentType;
-    status: PaymentStatus;
     value: number;
     paid_at: string;
-    description: string;
+    status: PaymentStatus;
+    description: string | null;
 }
 
 export interface PaymentFilters {
